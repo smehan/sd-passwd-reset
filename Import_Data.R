@@ -15,3 +15,7 @@ Pass_Reset <- read.csv("Data/SD_Password_Reset.csv", header=TRUE,
                        sep = ",", stringsAsFactors = FALSE, 
                        as.is = c("DAY"))
 # end
+
+# Convert dates to posix date objects
+Pass_Reset$DAY <- mdy(Pass_Reset$DAY)
+# end
