@@ -20,3 +20,10 @@ pass_reset_df <- read.csv("Data/SD_Password_Reset.csv", header=TRUE,
 pass_reset_df$DAY <- mdy(pass_reset_df$DAY)
 # end
 
+
+
+
+##################################
+# serialize the df
+##################################
+saveRDS(pass_reset_df, file="pass_reset_df.RDS")

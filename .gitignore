@@ -25,3 +25,5 @@ vignettes/*.pdf
 .Rproj.user
 # local additions
 sd-passwd-reset.Rproj
+local data files - should be able to regenerate from source data.
+*.RDS
