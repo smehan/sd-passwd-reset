@@ -11,12 +11,12 @@ library(reshape2)
 library(lubridate)
 
 # assemble the main datafile
-Pass_Reset <- read.csv("Data/SD_Password_Reset.csv", header=TRUE, 
-                       sep = ",", stringsAsFactors = FALSE, 
+pass_reset_df_df <- read.csv("Data/SD_Password_Reset.csv", header=TRUE,
+                       sep = ",", stringsAsFactors = FALSE,
                        as.is = c("DAY"))
 # end
 
 # Convert dates to posix date objects
-Pass_Reset$DAY <- mdy(Pass_Reset$DAY)
+pass_reset_df$DAY <- mdy(pass_reset_df$DAY)
 # end
 
