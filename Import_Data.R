@@ -26,4 +26,4 @@ pass_reset_df$DAY <- mdy(pass_reset_df$DAY)
 ##################################
 # serialize the df
 ##################################
-saveRDS(pass_reset_df, file="pass_reset_df.RDS")
+saveRDS(pass_reset_df, file="Data/pass_reset_df.RDS")
