@@ -4,6 +4,7 @@ library(plyr)
 library(ggplot2)
 library(lubridate)
 library(xts)
+library(forecast)
 
 ###########################################################
 ### Class to model time series analysis
@@ -37,19 +38,34 @@ plot.ts(self_change_xts['2014-08'], main="Self Password Changes per day\nFrom 20
 # Time series need to understand the frequency of the TS.
 # Here we are using another TS library that is building on the XTS df already built.
 
-self_day <- ts(self_change_xts, frequency=7)
+self_day <- ts(self_change_xts, frequency=365)
 self_week <- ts(self_change_xts, frequency=52)
 self_month <- ts(self_change_xts, frequency=12)
+self_quarterly <- ts(self_change_xts, frequency=4)
+self_annual <- ts(self_change_xts, frequency=1)
 
 # now we decompose it into its various parts from which we can analyze and plot
 self_day_components <- decompose(self_day)
 self_week_components <- decompose(self_week)
 self_month_components <- decompose(self_month)
+self_quarterly_components <- decompose(self_quarterly)
+self_annual_components <- decompose(self_annual)
 
 plot(self_day_components, col="blue")
 plot(self_week_components, col="blue")
 plot(self_month_components, col="red")
+plot(self_quarterly_components, col="purple")
 
+# another way to do the decompositions is with stl
+# Seasonal decomposition
+fit <- stl(ts(as.numeric(self_change_xts), frequency=12), s.window="periodic", robust=TRUE)
+plot(fit)
+
+monthplot(ts(as.numeric(self_change_xts), frequency=12))
+
+fit2 <- ets(ts(as.numeric(self_change_xts), frequency=365))
+
+plot(fit2)
 
 # method to estimate statiscal significance of seasonal component
 # http://robjhyndman.com/hyndsight/detecting-seasonality/
@@ -58,3 +74,5 @@ plot(self_month_components, col="red")
 # deviance <- 2*c(logLik(fit1) - logLik(fit2))
 # df <- attributes(logLik(fit1))$df - attributes(logLik(fit2))$df
 # 1-pchisq(deviance,df)
+
+log(ts(as.numeric(self_change_xts), frequency=365))
