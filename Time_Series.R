@@ -1,3 +1,6 @@
+###########################################################
+### Load packages
+###########################################################
 library(stringr)
 library(purrr)
 library(plyr)
@@ -37,7 +40,7 @@ plot.ts(self_change_xts['2014-08'], main="Self Password Changes per day\nin Aug 
 ##########################################################
 # Time series need to understand the frequency of the TS.
 # Here we are using another TS library that is building on the XTS df already built.
-
+##########################################################
 self_change_ts <- ts(self_change_xts, frequency=365)
 
 # now we decompose it into its various parts from which we can analyze and plot
