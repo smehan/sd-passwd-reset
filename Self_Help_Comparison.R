@@ -52,3 +52,24 @@ autoplot(sh_fall_14, facet=NULL) +
 autoplot(sh_fall_15, facet=NULL) +
   ggtitle('Password Changes - Fall 2015')
 
+################################################################
+## set up fall terms to compare on one plot
+################################################################
+
+### set all years to 2015 to allow for comparison of terms
+### on one plot
+# set year 2012 to 2015
+index(sh_fall_12) <- index(sh_fall_12) + (365 * 3)
+# Sept 2013 to December 2013
+index(sh_fall_13) <- index(sh_fall_13) + (365 * 2)
+# Sept 2014 to December 2014
+index(sh_fall_14) <- index(sh_fall_14) + (365 * 1)
+# Sept 2015 to December 2015
+## no need to calculate new index as 2015 is year we are using
+
+## combine all the quarters into one xts object
+fall_compare <- cbind(sh_fall_12, sh_fall_13, sh_fall_14, sh_fall_15)
+
+## create a plot for the SELF columns (fall 12-15)
+autoplot(fall_compare[,c(1,3,5,7)]) +
+  ggtitle('Compare Password Changes - Fall Terms')
