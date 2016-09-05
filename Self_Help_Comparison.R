@@ -23,20 +23,15 @@ self_help_xts <- xts(plot_pass_df, order.by = pass_reset_df$DAY)
 ### subset the time series into fall quarters for comparisons
 # Sept 2012 to December 2012
 sh_fall_12 <- window(self_help_xts['2012-09/2012-12'])
-plot(sh_fall_12[,1],major.ticks='months',minor.ticks=FALSE,main=NULL,col=3)
 # Sept 2013 to December 2013
 sh_fall_13 <- window(self_help_xts['2013-09/2013-12'])
-plot(sh_fall_13[,1],major.ticks='months',minor.ticks=FALSE,main=NULL,col=3)
 # Sept 2014 to December 2014
 sh_fall_14 <- window(self_help_xts['2014-09/2014-12'])
-plot(sh_fall_14[,1],major.ticks='months',minor.ticks=FALSE,main=NULL,col=3)
 # Sept 2015 to December 2015
 sh_fall_15 <- window(self_help_xts['2015-09/2015-12'])
-plot(sh_fall_15[,1],major.ticks='months',minor.ticks=FALSE,main=NULL,col=3)
 
 ## combine all the quarters into one xts object
 sh_fall_z <- cbind(sh_fall_12, sh_fall_13, sh_fall_14, sh_fall_15)
-
 
 ###########################################################
 ## Plot multiple time series plots to compare years
@@ -56,3 +51,4 @@ autoplot(sh_fall_14, facet=NULL) +
   ggtitle('Password Changes - Fall 2014')
 autoplot(sh_fall_15, facet=NULL) +
   ggtitle('Password Changes - Fall 2015')
+
