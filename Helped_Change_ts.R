@@ -40,16 +40,5 @@ fall_z <- cbind(fall_12, fall_13, fall_14, fall_15)
 autoplot(fall_z) + facet_free()
 autoplot(fall_z, facet = NULL)
 
-###########################################################
-## Plot multiple time series plots to compare years
-###########################################################
-# Set a color scheme:
-tsRainbow <- rainbow(ncol(zoo.basket))
-# Plot the overlayed series
-plot(x = zoo.basket, ylab = "Cumulative Return", main = "Cumulative Returns",
-     col = tsRainbow, screens = 1)
-# Set a legend in the upper left hand corner to match color to return series
-legend(x = "topleft", legend = c("SPY", "QQQ", "GDX", "DBO", "VWO"),
-       lty = 1,col = tsRainbow)
 
 
