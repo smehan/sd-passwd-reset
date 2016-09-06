@@ -70,7 +70,21 @@ index(sh_fall_14) <- index(sh_fall_14) + (365 * 1)
 ## combine all the quarters into one xts object
 fall_compare <- cbind(sh_fall_12, sh_fall_13, sh_fall_14, sh_fall_15)
 
+### rename columns for clarity in plotting
+names(fall_compare)[names(fall_compare) == "SELF_PASSWORD_CHANGE"] = "Fall_12_Self"
+names(fall_compare)[names(fall_compare) == "SELF_PASSWORD_CHANGE.1"] = "Fall_13_Self"
+names(fall_compare)[names(fall_compare) == "SELF_PASSWORD_CHANGE.2"] = "Fall_14_Self"
+names(fall_compare)[names(fall_compare) == "SELF_PASSWORD_CHANGE.3"] = "Fall_15_Self"
+
+names(fall_compare)[names(fall_compare) == "HELPED_PASSWORD_CHANGE"] = "Fall_12_Helped"
+names(fall_compare)[names(fall_compare) == "HELPED_PASSWORD_CHANGE.1"] = "Fall_13_Helped"
+names(fall_compare)[names(fall_compare) == "HELPED_PASSWORD_CHANGE.2"] = "Fall_14_Helped"
+names(fall_compare)[names(fall_compare) == "HELPED_PASSWORD_CHANGE.3"] = "Fall_15_Helped"
+
 ## create a plot for the SELF columns (fall 12-15)
 autoplot(fall_compare[,c(1,3,5,7)]) +
-  ggtitle('Compare Password Changes - Fall Terms')
+  ggtitle('Compare SELF Password Changes - Fall Terms')
 
+## create a plot for the HELPED columns (fall 12-15)
+autoplot(fall_compare[,c(2,4,6,8)]) +
+  ggtitle('Compare HELPED Password Changes - Fall Terms')
