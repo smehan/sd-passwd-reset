@@ -73,3 +73,4 @@ fall_compare <- cbind(sh_fall_12, sh_fall_13, sh_fall_14, sh_fall_15)
 ## create a plot for the SELF columns (fall 12-15)
 autoplot(fall_compare[,c(1,3,5,7)]) +
   ggtitle('Compare Password Changes - Fall Terms')
+
